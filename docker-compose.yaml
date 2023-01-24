@@ -1,0 +1,19 @@
+version: "3"
+
+volumes:
+  pg_data:
+
+services:
+  datapusher:
+    container_name: datapusher-plus
+    build:
+      context: ./datapusher-plus/0.7/
+      dockerfile: Dockerfile
+
+    ports:
+      - "8800:8800"
+    network_mode: "host"
+    env_file:
+      - ./.env
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:<YOUR_PASSWORD>@localhost/datapusher_jobs
