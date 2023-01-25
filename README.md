@@ -1,4 +1,4 @@
-# Manual installation
+# Installation
 
 These instructions assume you already have CKAN installed on this server in the default location described in the CKAN install documentation (/usr/lib/ckan/default). If this is the case, you should be able to run the following commands directly.
 
