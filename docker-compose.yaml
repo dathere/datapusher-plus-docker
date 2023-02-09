@@ -7,7 +7,7 @@ services:
   datapusher:
     container_name: datapusher-plus
     build:
-      context: ./datapusher-plus/0.7/
+      context: ./datapusher-plus/0.10.1/
       dockerfile: Dockerfile
 
     ports:
