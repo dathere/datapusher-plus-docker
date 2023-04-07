@@ -16,4 +16,4 @@ services:
     env_file:
       - ./.env
     environment:
-      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:<YOUR_PASSWORD>@localhost/datapusher_jobs
+      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:2486@localhost/datapusher_jobs
