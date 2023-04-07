@@ -6,6 +6,7 @@ FROM ubuntu:jammy
 LABEL maintainer="Minhaj"
 LABEL org.opencontainers.image.source https://github.com/ctrepka/docker-datapusher-plus
 
+
 # Set timezone
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -55,6 +56,10 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN python -m venv ${VENV}
 RUN ${VENV}/bin/pip install uwsgi
 
+#install tests
+RUN git clone https://github.com/dathere/testing-datapusher-plus.git
+RUN ${VENV}/bin/pip install -r testing-datapusher-plus/requirements.txt 
+RUN cd ..
 
 #INSTALL DATAPUSHER-PLUS FROM SOURCE REPO
 RUN git clone https://github.com/dathere/datapusher-plus.git
@@ -72,9 +77,11 @@ RUN curl https://raw.githubusercontent.com/dathere/datapusher-plus/0.10.1/deploy
 
 
 COPY ./entrypoint/startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 USER www-data
 
-ENTRYPOINT ["/bin/sh", "/startup.sh"]
+ENTRYPOINT [ "bash", "-c", "/startup.sh" ]
+
 
 EXPOSE 8800
