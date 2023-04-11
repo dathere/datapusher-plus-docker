@@ -26,6 +26,13 @@ nano docker-compose.yaml
 nano example.env
 ```
 
+4. Configure the tests
+Fork this repo https://github.com/dathere/testing-datapusher-plus
+Change the default values in config.ini and add any custom tests
+Configure the repo in the Dockerfile
+```sh
+nano Dockerfile
+```
 
 5. Run the following Docker commands:
 ```sh
