@@ -68,7 +68,7 @@ RUN ${VENV}/bin/pip install uwsgi
 
 
 #install tests
-RUN git clone https://github.com/dathere/testing-datapusher-plus.git
+RUN git clone --branch test https://github.com/dathere/testing-datapusher-plus.git
 RUN ${VENV}/bin/pip install -r testing-datapusher-plus/requirements.txt
 RUN cd ..
 
