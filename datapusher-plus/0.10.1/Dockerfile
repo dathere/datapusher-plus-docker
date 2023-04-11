@@ -55,7 +55,7 @@ RUN apt-get install --no-install-recommends -y \
 
 
 #install qsv;
-RUN wget https://github.com/jqnatividad/qsv/releases/download/0.87.1/qsv-0.87.1-x86_64-unknown-linux-gnu.zip -P /tmp
+RUN wget https://github.com/jqnatividad/qsv/releases/download/0.99.0/qsv-0.99.0-x86_64-unknown-linux-gnu.zip -P /tmp
 RUN unzip /tmp/qsv-0.87.1-x86_64-unknown-linux-gnu.zip -d /tmp
 RUN rm /tmp/qsv-0.87.1-x86_64-unknown-linux-gnu.zip
 RUN  mv /tmp/qsv* /usr/local/bin
