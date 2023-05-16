@@ -77,6 +77,7 @@ RUN cd ..
 RUN git clone --branch 0.11.0 https://github.com/datHere/datapusher-plus
 RUN cd ${SRC_DIR}/datapusher-plus && \
    ${VENV}/bin/pip install -r requirements-dev.txt && \
+   ${VENV}/bin/pip install tzdata --upgrade && \
    ${VENV}/bin/pip install -e .
 
 
