@@ -14,5 +14,4 @@ services:
       - "8800:8800"
     network_mode: "host"
     environment:
-      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:<YOUR_PASSWORD>@localhost/datapusher_jobs
-      - WRITE_ENGINE_URL=postgresql://datapusher:<YOUR_PASSWORD>@localhost/datastore_default
+      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:2486@localhost/datapusher_jobs
