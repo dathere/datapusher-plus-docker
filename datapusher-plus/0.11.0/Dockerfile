@@ -67,10 +67,12 @@ RUN python -m venv ${VENV}
 RUN ${VENV}/bin/pip install uwsgi
 
 
-#install tests
-RUN git clone --branch test https://github.com/dathere/testing-datapusher-plus.git
-RUN ${VENV}/bin/pip install -r testing-datapusher-plus/requirements.txt
-RUN cd ..
+#install tests 
+#Add custom values before installing tests https://github.com/dathere/testing-datapusher-plus.git
+#and unable the script in startup.sh
+#RUN git clone --branch master https://github.com/dathere/testing-datapusher-plus.git
+#RUN ${VENV}/bin/pip install -r testing-datapusher-plus/requirements.txt
+#RUN cd ..
 
 
 #INSTALL DATAPUSHER-PLUS FROM SOURCE REPO
