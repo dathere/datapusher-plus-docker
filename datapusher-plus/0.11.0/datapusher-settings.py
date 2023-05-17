@@ -1,4 +1,0 @@
-import os
-
-WRITE_ENGINE_URL = os.environ.get("WRITE_ENGINE_URL")
-SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
