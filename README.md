@@ -42,4 +42,5 @@ docker-compose up
 
 6. Finally,the datapusher should be running on http://datapusher:8800
 
-
+# Testing
+Docker image can be tested using this [test script](https://github.com/dathere/datapusher-plus-docker)
