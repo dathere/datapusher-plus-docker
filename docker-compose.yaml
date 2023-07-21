@@ -9,10 +9,14 @@ services:
     build:
       context: ./datapusher-plus/0.15.0/
       dockerfile: Dockerfile
-
+    networks:
+      - ckan-docker_default
     ports:
       - "8800:8800"
     network_mode: "host"
-    environment:
-      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:<YOUR_PASSWORD>@localhost/datapusher_jobs
-      - WRITE_ENGINE_URL=postgresql://datapusher:<YOUR_PASSWORD>@localhost/datastore_default
+    restart: unless-stopped
+
+networks:
+  ckan-docker_default:
+    external: true
+
