@@ -9,7 +9,7 @@ services:
     build:
       context: ./datapusher-plus/0.15.0/
       dockerfile: Dockerfile
-
+    restart: always
     ports:
       - "8800:8800"
     network_mode: "host"
