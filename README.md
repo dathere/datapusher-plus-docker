@@ -36,8 +36,9 @@ nano Dockerfile
 
 5. Run the following Docker commands:
 ```sh
-docker-compose build
-docker-compose up
+sudo systemctl enable docker
+docker compose build
+docker compose up  -d
 ```
 
 6. Finally,the datapusher should be running on http://datapusher:8800
