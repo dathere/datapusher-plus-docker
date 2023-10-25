@@ -82,8 +82,8 @@ RUN cd ${SRC_DIR}/datapusher-plus && \
 
 #SETUP CONFIG/SETTINGS.PY
 RUN mkdir -p ${CFG_DIR}
-COPY ./example.env ${CFG_DIR}/.env
-ENV JOB_CONFIG=${CFG_DIR}/.env
+COPY .env ${SRC_DIR}/datapusher-plus/datapusher/.env
+ENV JOB_CONFIG=${SRC_DIR}/datapusher-plus/datapusher/.env
 
 
 

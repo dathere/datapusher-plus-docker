@@ -13,6 +13,10 @@ services:
     ports:
       - "8800:8800"
     network_mode: "host"
-    environment:
-      - SQLALCHEMY_DATABASE_URI=postgresql://datapusher_jobs:<YOUR_PASSWORD>@localhost/datapusher_jobs
-      - WRITE_ENGINE_URL=postgresql://datapusher:<YOUR_PASSWORD>@localhost/datastore_default
+    restart: unless-stopped
+
+#If you are using ckan docker
+#networks:
+#  ckan-docker_default:
+#    external: true
+
