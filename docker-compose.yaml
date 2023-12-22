@@ -13,7 +13,6 @@ services:
     ports:
       - "8800:8800"
     network_mode: "host"
-    restart: unless-stopped
 
 #If you are using ckan docker
 #networks:

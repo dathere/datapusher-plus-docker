@@ -32,14 +32,12 @@ RUN apt-get install --no-install-recommends -y locales
 RUN sed -i "/$LC_ALL/s/^# //g" /etc/locale.gen
 RUN dpkg-reconfigure --frontend=noninteractive locales
 RUN update-locale LANG=${LC_ALL}
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
 
-
-# Instal apt-utils
+# Install apt-utils and other dependencies
 RUN apt-get install --no-install-recommends -y \
    apt-utils \
-   python3-venv \
-   python3-dev \
-   python3 \
    build-essential \
    libxslt1-dev \
    libxml2-dev \
@@ -47,10 +45,23 @@ RUN apt-get install --no-install-recommends -y \
    wget \
    curl \
    unzip \
-   python3-pip \
-   git\
-   libpq-dev\
+   git \
+   libpq-dev \
    file
+
+# Install Python 3.9 (check if it's available in the default repo first)
+# If not available, use the previously added PPA
+RUN apt-get install -y python3.9 python3.9-dev python3.9-venv
+
+# Set Python 3.9 as the default Python version
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
+
+# Install pip for Python 3.9
+RUN apt-get install -y python3-pip
+
+# Clean up APT when done
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 #install qsv;
@@ -61,8 +72,7 @@ RUN mv qsv* /usr/local/bin
 
 
 #python env setup; link python3 to python cmd; make venv; install uwsgi;
-RUN ln -s /usr/bin/python3 /usr/bin/python
-RUN python -m venv ${VENV}
+RUN python3 -m venv ${VENV}
 RUN ${VENV}/bin/pip install uwsgi
 
 
@@ -78,12 +88,17 @@ RUN ${VENV}/bin/pip install uwsgi
 RUN git clone --branch 0.15.0 https://github.com/datHere/datapusher-plus
 RUN cd ${SRC_DIR}/datapusher-plus && \
    ${VENV}/bin/pip install -r requirements-dev.txt && \
-   ${VENV}/bin/pip install -e .
+   ${VENV}/bin/pip install -e . 
+
+   
+RUN ${VENV}/bin/pip install Flask==2.3.3 
+RUN ${VENV}/bin/pip install Werkzeug==2.3.0
+
 
 
 #SETUP CONFIG/SETTINGS.PY
 RUN mkdir -p ${CFG_DIR}
-COPY .env ${SRC_DIR}/datapusher-plus/datapusher/.env
+COPY example.env ${SRC_DIR}/datapusher-plus/datapusher/.env
 ENV JOB_CONFIG=${SRC_DIR}/datapusher-plus/datapusher/.env
 
 
