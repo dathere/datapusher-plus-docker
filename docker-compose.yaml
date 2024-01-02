@@ -13,9 +13,6 @@ services:
     ports:
       - "8800:8800"
     network_mode: "host"
-
-#If you are using ckan docker
-#networks:
-#  ckan-docker_default:
-#    external: true
-
+    environment:
+      - WRITE_ENGINE_URL=postgresql://dathere_datapusher:-Vcvn3Kbq4wiAEkA@localhost/data_dathere_datastore_default
+      - SQLALCHEMY_DATABASE_URI=postgresql://dathere_datapusher_jobs:Uu6c-YFr9A_kFE4Z@$PG_HOST:5432/dathere_datapusher_jobs

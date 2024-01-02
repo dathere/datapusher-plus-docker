@@ -102,7 +102,7 @@ COPY example.env ${SRC_DIR}/datapusher-plus/datapusher/.env
 ENV JOB_CONFIG=${SRC_DIR}/datapusher-plus/datapusher/.env
 
 
-
+ 
 RUN curl https://raw.githubusercontent.com/dathere/datapusher-plus/0.15.0/deployment/datapusher-uwsgi.ini -o ${CFG_DIR}/uwsgi.ini
 
 
